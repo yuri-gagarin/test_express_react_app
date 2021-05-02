@@ -10,13 +10,16 @@
   },
   "scripts": {
     "lint": "eslint . --ext .ts",
-    "start": "node dist/server.js",
-    "start:dev": "ts-node -e nodemon src/server.ts",
-    "build": "tsc -p ."
-
+    "start": "export NODE_ENV=production && node dist/app.js",
+    "start:dev": "export NODE_ENV=development && nodemon --watch",
+    "build": "rm -d -r ./dist && tsc -p ."
   },
   "devDependencies": {
     "@types/express": "^4.17.11",
+    "@types/jest": "^26.0.23",
+    "@types/node": "^15.0.1",
+    "@types/react": "^17.0.4",
+    "@types/react-dom": "^17.0.3",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "eslint": "^7.25.0",

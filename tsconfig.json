@@ -8,5 +8,6 @@
     "rootDir": "src",
     "outDir": "dist"
   },
+  "exclude": [ "client" ],
   "lib": ["es2015"]
 }
