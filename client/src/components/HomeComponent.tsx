@@ -1,12 +1,37 @@
 import React from "react";
 import { Grid, Header, Image, Menu, Segment } from "semantic-ui-react";
+// router //
+import { Route, useHistory } from "react-router-dom";
+// components //
+import { FirstTestPageComponent } from "./FirstTestPageComponent";
+import { SecondTestPageComponent } from "./SecondTestPageComponent";
 import type { MenuItemProps } from "semantic-ui-react";
 
 export const HomeComponent = (): JSX.Element => {
   const [ activeMenuItem, setActiveMenuItem ] = React.useState<string>("home");
+  const history = useHistory();
 
   const handleItemClick = (_e: React.MouseEvent, { name } : MenuItemProps) => {
-    name ? setActiveMenuItem(name) : setActiveMenuItem("home");
+    switch (name) {
+      case "home": {
+        setActiveMenuItem("home");
+        history.push("/");
+        break;
+      };
+      case "firstPage": {
+        setActiveMenuItem("firstPage");
+        history.push("/first");
+        break;
+      };
+      case "secondPage": {
+        setActiveMenuItem("secondPage");
+        history.push("/second");
+        break;
+      };
+      default: {
+        history.push("/");
+      };
+    }
   };
 
   return (
@@ -39,20 +64,28 @@ export const HomeComponent = (): JSX.Element => {
         </Menu>
       </Grid.Row>
       <Grid.Row>
-        <Grid stackable columns={ 2 }>
-          <Grid.Row>
-            <Grid.Column>
-              <Segment>
-                <Image src='https://react.semantic-ui.com//images/wireframe/paragraph.png' />
-              </Segment>
-            </Grid.Column>
-            <Grid.Column>
-              <Segment>
-                <Image src='https://react.semantic-ui.com//images/wireframe/paragraph.png' />
-              </Segment>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
+        <Route path="/" exact={ true }> 
+          <Grid stackable columns={ 2 }>
+            <Grid.Row>
+              <Grid.Column>
+                <Segment>
+                  <Image src='https://react.semantic-ui.com//images/wireframe/paragraph.png' />
+                </Segment>
+              </Grid.Column>
+              <Grid.Column>
+                <Segment>
+                  <Image src='https://react.semantic-ui.com//images/wireframe/paragraph.png' />
+                </Segment>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Route>
+        <Route path="/first" exact={ true }> 
+          <FirstTestPageComponent />
+        </Route>
+        <Route path="/second" exact={ true }> 
+          <SecondTestPageComponent />
+        </Route>
       </Grid.Row>
     </Grid>
   );
