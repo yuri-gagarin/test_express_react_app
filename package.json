@@ -6,7 +6,9 @@
   "author": "yuri-gagarin",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.3"
   },
   "scripts": {
     "lint": "eslint . --ext .ts",
