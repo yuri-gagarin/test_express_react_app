@@ -15,7 +15,6 @@ if (process.env.NODE_ENV === "production") {
     });
 }
 else {
-    console.log(15);
     app.get("/*", (_, res) => {
         res.sendFile(path_1.default.resolve("client", "public", "index.html"));
     });
