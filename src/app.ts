@@ -6,16 +6,16 @@ const port: string = process.env.PORT || "8080";
 
 // middleware //
 
-app.use(express.static(path.resolve("client", "build")));
+app.use(express.static(path.join(__dirname, "..", "client", "build")));
 console.log("current path:");
-console.log(path.resolve());
+console.log(path.join(__dirname, "..", "client", "build"));
 if (process.env.NODE_ENV === "production") {
   app.get("/*", (_, res) => {
-    res.sendFile(path.resolve("client", "build", "index.html"));
+    res.sendFile(path.join(__dirname, "..", "client", "build", "index.html"));
   });
 } else {
   app.get("/*", (_, res) => {
-    res.sendFile(path.resolve("client", "public", "index.html"));
+    res.sendFile(path.join(__dirname, "..", "client", "publc", "index.html"));
   });
 }
 app.listen(port, () => {
