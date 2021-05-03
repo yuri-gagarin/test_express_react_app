@@ -9,6 +9,8 @@ const app = express_1.default();
 const port = process.env.PORT || "8080";
 // middleware //
 app.use(express_1.default.static(path_1.default.resolve("client", "build")));
+console.log("current path:");
+console.log(path_1.default.resolve());
 if (process.env.NODE_ENV === "production") {
     app.get("/*", (_, res) => {
         res.sendFile(path_1.default.resolve("client", "build", "index.html"));
